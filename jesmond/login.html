@@ -9,7 +9,7 @@
       <h2 class="title is-3 has-text-centered is-size-3-mobile">Sign into your Subscriby account</h2>
       <p>Pop your email address that you signed up with in the box below and we'll ping you an email, click the link in that email and you'll be securely logged in.</p>
       <br />
-      <form method="POST" action="/login">
+      <form method="POST" action="{{ url_for('auth.login') }}">
   			{{ form.csrf_token }}
         <input id="email" class="input is-large" name="email" type="email" placeholder="Email Address" value="">
         <br />
