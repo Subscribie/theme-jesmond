@@ -93,7 +93,7 @@
           </p>
           <br />
           <a class="button is-fullwidth
-          {% if stripe_connected  %}
+          {% if jamla['integrations']['google_tag_manager']['container_id'] %}
             is-success
           {% else %}
             is-info
