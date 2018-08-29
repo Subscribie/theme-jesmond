@@ -76,6 +76,39 @@
   </div>
 </div>
 
+<!-- Social Integrations -->
+<div class="section">
+  <div class="container">
+    <h2 class="title is-3">Manage Social Integrations</h2>
+    <div class="columns" style="max-width:1000px;">
+      <div class="column">
+        <div class="box hover">
+          <img src="/static/tawk_logo.png" 
+              alt="Tawk logo" 
+              style="width:auto; display:block; margin:auto" />
+          <h3 class="title is-5">Tawk</h3>
+          <p>Chat with your potential customers live on your website!</p>
+          <br />
+          <a class="button is-fullwidth
+          {% if jamla['integrations']['tawk']['property_id'] %}
+            is-success
+          {% else %}
+            is-info
+          {% endif %}
+          " href="/connect/tawk/manually">
+            {% if jamla['integrations']['tawk']['property_id'] %}
+                Active! Click to reconnect Tawk
+            {% else %}
+               Connect to Tawk
+            {% endif %}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Tawk Integrations -->
+
 <!-- Analytics Integrations -->
 <div class="section">
   <div class="container">
