@@ -6,6 +6,8 @@
 <link rel="manifest" href="/manifest.json">
 <link rel="stylesheet" href="/static/style.css">
 <link href="https://fonts.googleapis.com/css?family=Lato:900,400" rel="stylesheet">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js">
+</script>
 
 {% if jamla['integrations']['google_tag_manager']['container_id'] 
    and jamla['integrations']['google_tag_manager']['active']
@@ -20,6 +22,25 @@
     '{{ jamla['integrations']['google_tag_manager']['container_id'] }}');
     </script>
     <!-- End Google Tag Manager --> 
+{% endif %}
+
+{% if jamla['integrations']['tawk']['property_id'] 
+   and jamla['integrations']['tawk']['active']
+%}
+    <!-- Tawk Chat -->
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var
+        s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/{{ jamla['integrations']['tawk']['property_id'] }}/default';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+        </script>
+    <!-- End Tawk Chat -->
 {% endif %}
 
 <meta name="theme-color" content="#1e88e5">
