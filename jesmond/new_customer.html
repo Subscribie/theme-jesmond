@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% block title %}New Customer{% endblock %}
+{% block title %} {% if title %} {{ title }} {% else %} New Customer {% endif %} {% endblock %}
 
 {% block hero %}
 
