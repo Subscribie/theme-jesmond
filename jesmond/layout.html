@@ -60,6 +60,13 @@
             {{ jamla['company']['name'] }}
           {% endif %}
         </a>
+        {% for page in pages %}
+          {% for key, value in page.items() %}
+          <a class="navbar-item" href="/{{ value['path'] }}">
+            {{ value['path'][0]|upper}}{{ value['path'][1:] }}
+          </a>
+          {% endfor %}
+        {% endfor %}
       </div>
     </div>
   </nav>
