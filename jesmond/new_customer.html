@@ -180,10 +180,24 @@
 
         </div>
     </div>
-
+    <!-- detect if embeded in iframe to trigger new tab if needed -->
+    <input type="hidden" name="is_iframe" id="is_iframe" value="" />
+    <!-- end detect if embeded in iframe to trigger new tab if needed -->
     <input type=submit class="button is-success is-medium is-fullwidth" value="Continue to Payment">
 
   </form>
+  <script type="text/javascript">
+    let inIframeElm = document.getElementById('is_iframe');
+    if ( window.location !== window.parent.location ) {
+      // In an iframe
+      console.log("In an iframe");
+      inIframeElm.value = 'True';
+    } else {
+      // Not in an iframe
+      console.log("Not in an iframe");
+      inIframeElm.value = 'False';
+    }
+  </script>
 </div>
 </div>
 
