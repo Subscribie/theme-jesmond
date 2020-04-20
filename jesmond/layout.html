@@ -60,6 +60,9 @@
             {{ jamla['company']['name'] }}
           {% endif %}
         </a>
+        {% if g.user != None %}
+          <a class="navbar-item" href="/admin/dashboard">Dashboard</a>
+        {% endif %}
         {% for page in pages %}
           {% for key, value in page.items() %}
           <a class="navbar-item" href="/{{ value['path'] }}">
