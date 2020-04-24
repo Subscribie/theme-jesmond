@@ -44,7 +44,7 @@
                     <small>Upfront cost: None</small></br></br>
                   {% endif %}
 
-                  <a href="/new_customer?plan={{ item['sku'] }}"
+                  <a href="/new_customer?plan={{ item['uuid'] }}&sku={{ item['sku'] }}"
                       style="background-color:{{ item['primary_colour'] }}"
                       class="button is-fullwidth is-info">
                   Choose</a>
