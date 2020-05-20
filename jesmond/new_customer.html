@@ -133,7 +133,7 @@
           </div>
 
           {% for item in jamla['items'] %}
-            {% if item['sku'] == request.args.get('plan') %}
+            {% if item['uuid'] == request.args.get('plan') %}
               {% if item['requirements']['note_to_seller_required'] %}
                 <h3 class="title is-4 is-size-4-mobile" style="text-align:left">Note to seller</h3>
                 <p>{{ item["requirements"]["note_to_buyer_message"] }}<p>
