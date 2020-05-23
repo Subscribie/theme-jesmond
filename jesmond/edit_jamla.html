@@ -12,7 +12,7 @@
     {{ form.csrf_token }}
 <fieldset>
 <legend>Shop details</legend>
-    {{ render_field(form.company_name, value=company['name'] ) }}
+    {{ render_field(form.company_name, value=company.name ) }}
     {{ render_field(form.email, type="email", value=jamla['users'][0]) }}
 </fieldset>
 
