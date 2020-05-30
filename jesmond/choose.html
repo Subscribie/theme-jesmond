@@ -24,29 +24,31 @@
 
       <div id="pricing-table">
         <div class="pricing-table">
-          {% for item in jamla['items'] %}
+          {% for item in items %}
             <div class="pricing-plan">
-                <div class="plan-header" style="color:{{ item['primary_colour'] }}"><img src="{{ item['primary_icon']['src'] }}" style="width:50%;display:block; margin:auto"/>{{ item['title']|safe }}</div>
+                <div class="plan-header">
+                  <img src="{{ item.primary_icon }}" style="width:50%;display:block; margin:auto"/>
+                  {{ item.title|safe }}
+                </div>
                 <div class="plan-items">
-                {% for sellingPoint in item['selling_points'] %}
-                    <div class="plan-item">{{ sellingPoint|safe }}</div>
+                {% for sellingPoint in item.selling_points%}
+                    <div class="plan-item">{{ sellingPoint.point|safe }}</div>
                 {% endfor %}
                 </div>
               <div class="plan-footer">
                   <div class="plan-price" style="padding-bottom:0;">
-                      <span style="color:{{ item['primary_colour'] }}" class="plan-price-amount">
-                          <span class="plan-price-currency">&pound;</span>{{ "%.2f"|format(item['monthly_price']/100) }}</span>/month
+                      <span class="plan-price-amount">
+                          <span class="plan-price-currency">&pound;</span>{{ "%.2f"|format(item.monthly_price/100) }}</span>/month
                   </div>
 
-                  {% if item['sell_price'] %}
-                    <small>Upfront cost: &pound;{{ "%.2f"|format(item['sell_price']/100) }}</small></br></br>
+                  {% if item.sell_price %}
+                    <small>Upfront cost: &pound;{{ "%.2f"|format(item.sell_price/100) }}</small></br></br>
                   {% else %}
                     <small>Upfront cost: None</small></br></br>
                   {% endif %}
 
-                  <a href="/new_customer?plan={{ item['uuid'] }}&sku={{ item['sku'] }}"
-                      style="background-color:{{ item['primary_colour'] }}"
-                      class="button is-fullwidth is-info">
+                  <a href="/new_customer?plan={{ item.uuid }}"
+                  class="button is-fullwidth is-info">
                   Choose</a>
               </div>
             </div>
