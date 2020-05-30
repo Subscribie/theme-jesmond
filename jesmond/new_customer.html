@@ -132,16 +132,12 @@
             </div>
           </div>
 
-          {% for item in jamla['items'] %}
-            {% if item['uuid'] == request.args.get('plan') %}
-              {% if item['requirements']['note_to_seller_required'] %}
-                <h3 class="title is-4 is-size-4-mobile" style="text-align:left">Note to seller</h3>
-                <p>{{ item["requirements"]["note_to_buyer_message"] }}<p>
-                <textarea rows="5" cols="25" name="note_to_seller" required>
-                </textarea>
-              {% endif %}
-            {% endif %}
-          {% endfor %}
+          {% if item.requirements[0].note_to_seller_required %}
+            <h3 class="title is-4 is-size-4-mobile" style="text-align:left">Note to seller</h3>
+            <p>{{ item.requirements[0].note_to_buyer_message }}<p>
+            <textarea rows="5" cols="25" name="note_to_seller" required>
+            </textarea>
+          {% endif %}
 
         </div>
 
@@ -151,33 +147,27 @@
 
           <h3 class="title is-4 is-size-4-mobile" style="text-align:left">Order Summary</h3>
 
-          {% for item in jamla['items'] %}
-            {% if item['uuid'] == request.args.get('plan') %}
+          <h4 class="title is-5 is-size-5-mobile" style="text-align:left">{{ item.title }}</h4>
+          <div class="content">
+            <ul>
+            {% for selling_point in item.selling_points %}
+              <li><p class="subtitle is-6">{{ selling_point.point}}</p></li>
+            {% endfor %}
+            </ul>
+          </div>
+          <div class="content has-text-right">
+            {% for requirement in item.requirements %}
+              {% if requirement.instant_payment == True %}
+                <p><b>Pay today:</b> <span class="tag is-success is-medium">&pound;{{ "%.2f"|format(item.sell_price/100) }}</span></p>
+              {% endif %}
+              {% if requirement.subscription == True %}
+                <p><b>Price per month:</b> <span class="tag is-info is-large">&pound;{{ "%.2f"|format(item.monthly_price/100) }}</span></p>
+              {% endif %}
+            {% endfor %}
+          </div>
+          <div class="content has-text-right">
 
-              <h4 class="title is-5 is-size-5-mobile" style="text-align:left">{{ item['title'] }}</h4>
-              <div class="content">
-                <ul>
-                {% for selling_points in item['selling_points'] %}
-                  <li><p class="subtitle is-6">{{ selling_points }}</p></li>
-                {% endfor %}
-                </ul>
-              </div>
-              <div class="content has-text-right">
-                {% for requirement in item['requirements'] %}
-                  {% if requirement['instant_payment'] == True %}
-                    <p><b>Pay today:</b> <span class="tag is-success is-medium">&pound;{{ "%.2f"|format(item['sell_price']/100) }}</span></p>
-                  {% endif %}
-                  {% if requirement['subscription'] == True %}
-                    <p><b>Price per month:</b> <span class="tag is-info is-large">&pound;{{ "%.2f"|format(item['monthly_price']/100) }}</span></p>
-                  {% endif %}
-                {% endfor %}
-              </div>
-              <div class="content has-text-right">
-
-              </div>
-
-            {% endif %}
-          {% endfor %}
+          </div>
 
         </div>
     </div>
