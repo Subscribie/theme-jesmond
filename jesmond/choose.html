@@ -42,10 +42,15 @@
               <div class="plan-footer">
                   <div class="plan-price" style="padding-bottom:0;">
                       <span class="plan-price-amount">
-                          <span class="plan-price-currency">&pound;</span>{{ "%.2f"|format(item.monthly_price/100) }}</span>/month
+                      {% if item.requirements.subscription %}
+                          <span class="plan-price-currency">&pound;</span>{{ "%.2f"|format(item.interval_amount/100) }}</span>/
+                          {{ item.interval_unit }}
+                      {% else %}
+                          <span class="plan-price-currency">&pound;</span>0.00
+                      {% endif %}
+                      </span>
                   </div>
-
-                  {% if item.sell_price %}
+                  {% if item.requirements.instant_payment %}
                     <small>Upfront cost: &pound;{{ "%.2f"|format(item.sell_price/100) }}</small></br></br>
                   {% else %}
                     <small>Upfront cost: None</small></br></br>
