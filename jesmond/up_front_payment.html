@@ -43,11 +43,11 @@
 		<div class="content">
 		<p>
            <b>Pay today:</b>
-           <span class="tag is-success is-medium">&pound; {{ "%.2f"|format(item.sell_price/100) }}</span>
+           <span class="tag is-success is-medium">&pound; {{ "%.2f"|format(plan.sell_price/100) }}</span>
         </p>
 		<p>
-           <b>Price ({{ item.interval_unit }})</b>
-           <span class="tag is-info is-medium">&pound; {{ "%.2f"|format(item.interval_amount/100) }}</span>
+           <b>Price ({{ plan.interval_unit }})</b>
+           <span class="tag is-info is-medium">&pound; {{ "%.2f"|format(plan.interval_amount/100) }}</span>
         </p>
 		</div>
 
@@ -56,10 +56,10 @@
     <div class="column">
 		<h2 class="title is-4">Order Summary:</h2>
 
-		<h4 class="title is-5 is-size-5-mobile" style="text-align:left">{{ item.title|capitalize() }}</h4>
+		<h4 class="title is-5 is-size-5-mobile" style="text-align:left">{{ plan.title|capitalize() }}</h4>
 		<div class="content">
 		<ul>
-			{% for selling_point in item.selling_points %}
+			{% for selling_point in plan.selling_points %}
 			<li>{{ selling_point.point }}</li>
 			{% endfor %}
 		</ul>
@@ -73,14 +73,14 @@
 		<form action="/up_front" method="post" id="payment-form">
 		<article>
 		  <input id="sid" name="sid" type="hidden" value="{{ sid }}"></input>
-		  <input id="package" name="package" type="hidden" value="{{ item.title }}"></input>
+		  <input id="package" name="package" type="hidden" value="{{ plan.title }}"></input>
 		</article>
 
 		<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
 				data-key="{{ stripe_pub_key }}"
-				data-description="{{ company.name }} - {{ item.title }}"
+				data-description="{{ company.name }} - {{ plan.title }}"
 				data-currency="gbp"
-				data-amount="{{ item.sell_price }}"
+				data-amount="{{ plan.sell_price }}"
 				data-locale="auto">
 		</script>
         </form>
