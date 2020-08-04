@@ -275,7 +275,7 @@ input[type=checkbox]:checked + label::after {
   text-align: center;
 }
 
-.pricing-table .pricing-plan .plan-item {
+.pricing-table .pricing-plan .plan-plan {
   background: whitesmoke;
   border-bottom: 0.1rem solid white;
   padding: .75em;
@@ -740,7 +740,7 @@ input[type=checkbox]:checked + label::after {
     display: none;
   }
 
-  .pricing-table.is-comparative .plan-item::before {
+  .pricing-table.is-comparative .plan-plan::before {
     content: attr("data-feature");
   }
 
@@ -784,7 +784,7 @@ input[type=checkbox]:checked + label::after {
             justify-content: center;
   }
 
-  .pricing-table.is-horizontal .pricing-plan .plan-items {
+  .pricing-table.is-horizontal .pricing-plan .plan-plans{
     width: 100%;
     background-color: whitesmoke;
     columns: 2;
@@ -819,7 +819,7 @@ input[type=checkbox]:checked + label::after {
     display: none;
   }
 
-  .pricing-table.is-comparative .pricing-plan .plan-item::before {
+  .pricing-table.is-comparative .pricing-plan .plan-plan::before {
     content: attr(data-feature);
     display: block;
     font-weight: 600;

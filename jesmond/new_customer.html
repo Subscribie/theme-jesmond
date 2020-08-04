@@ -132,9 +132,9 @@
             </div>
           </div>
 
-          {% if item.requirements.note_to_seller_required %}
+          {% if plan.requirements.note_to_seller_required %}
             <h3 class="title is-4 is-size-4-mobile" style="text-align:left">Note to seller</h3>
-            <p>{{ item.requirements.note_to_buyer_message }}<p>
+            <p>{{ plan.requirements.note_to_buyer_message }}<p>
             <textarea rows="5" cols="25" name="note_to_seller" required>
             </textarea>
           {% endif %}
@@ -147,20 +147,20 @@
 
           <h3 class="title is-4 is-size-4-mobile" style="text-align:left">Order Summary</h3>
 
-          <h4 class="title is-5 is-size-5-mobile" style="text-align:left">{{ item.title }}</h4>
+          <h4 class="title is-5 is-size-5-mobile" style="text-align:left">{{ plan.title }}</h4>
           <div class="content">
             <ul>
-            {% for selling_point in item.selling_points %}
+            {% for selling_point in plan.selling_points %}
               <li><p class="subtitle is-6">{{ selling_point.point}}</p></li>
             {% endfor %}
             </ul>
           </div>
           <div class="content has-text-right">
-            {% if item.requirements.instant_payment %}
-              <p><b>Pay today:</b> <span class="tag is-success is-medium">&pound;{{ "%.2f"|format(item.sell_price/100) }}</span></p>
+            {% if plan.requirements.instant_payment %}
+              <p><b>Pay today:</b> <span class="tag is-success is-medium">&pound;{{ "%.2f"|format(plan.sell_price/100) }}</span></p>
             {% endif %}
-            {% if item.requirements.subscription %}
-            <p><b>Price ({{ item.interval_unit }}) :</b> <span class="tag is-info is-large">&pound;{{ "%.2f"|format(item.interval_amount/100) }}</span></p>
+            {% if plan.requirements.subscription %}
+            <p><b>Price ({{ plan.interval_unit }}) :</b> <span class="tag is-info is-large">&pound;{{ "%.2f"|format(plan.interval_amount/100) }}</span></p>
             {% endif %}
           </div>
           <div class="content has-text-right">

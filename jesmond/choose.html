@@ -26,37 +26,37 @@
 
       <div id="pricing-table">
         <div class="pricing-table">
-          {% for item in items %}
+          {% for plan in plans %}
             <div class="pricing-plan">
                 <div class="plan-header">
-                  {% if item.primary_icon %}
-                    <img src="{{ item.primary_icon }}" style="width:50%;display:block; margin:auto"/>
+                  {% if plan.primary_icon %}
+                    <img src="{{ plan.primary_icon }}" style="width:50%;display:block; margin:auto"/>
                   {% endif %}
-                  {{ item.title|safe }}
+                  {{ plan.title|safe }}
                 </div>
-                <div class="plan-items">
-                {% for sellingPoint in item.selling_points%}
-                    <div class="plan-item">{{ sellingPoint.point|safe }}</div>
+                <div class="plan-plans">
+                {% for sellingPoint in plan.selling_points%}
+                    <div class="plan-plan">{{ sellingPoint.point|safe }}</div>
                 {% endfor %}
                 </div>
               <div class="plan-footer">
                   <div class="plan-price" style="padding-bottom:0;">
                       <span class="plan-price-amount">
-                      {% if item.requirements.subscription %}
-                          <span class="plan-price-currency">&pound;</span>{{ "%.2f"|format(item.interval_amount/100) }}</span>/
-                          {{ item.interval_unit }}
+                      {% if plan.requirements.subscription %}
+                          <span class="plan-price-currency">&pound;</span>{{ "%.2f"|format(plan.interval_amount/100) }}</span>/
+                          {{ plan.interval_unit }}
                       {% else %}
                           <span class="plan-price-currency">&pound;</span>0.00
                       {% endif %}
                       </span>
                   </div>
-                  {% if item.requirements.instant_payment %}
-                    <small>Upfront cost: &pound;{{ "%.2f"|format(item.sell_price/100) }}</small></br></br>
+                  {% if plan.requirements.instant_payment %}
+                    <small>Upfront cost: &pound;{{ "%.2f"|format(plan.sell_price/100) }}</small></br></br>
                   {% else %}
                     <small>Upfront cost: None</small></br></br>
                   {% endif %}
 
-                  <a href="/new_customer?plan={{ item.uuid }}"
+                  <a href="/new_customer?plan={{ plan.uuid }}"
                   class="button is-fullwidth is-info">
                   Choose</a>
               </div>
