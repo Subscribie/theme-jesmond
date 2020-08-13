@@ -23,14 +23,14 @@
 {% block body %}
 
 <div class="section">
+
+  <h3 class="title is-4 has-text-centered is-size-4-mobile">Make your choice</h2>
+
   <div class="container">
-
-      <h3 class="title is-4 has-text-centered is-size-4-mobile">Make your choice</h2>
-
-      <div id="pricing-table">
-        <div class="pricing-table">
+      <div id="pricing-table" class="container ">
+        <div class="pricing-table row justify-content-around">
           {% for plan in plans %}
-            <div class="pricing-plan">
+            <div class="pricing-plan col-lg-3 col-md-5 my-3 mx-3">
                 <div class="plan-header">
                   {% if plan.primary_icon %}
                     <img src="{{ plan.primary_icon }}" style="width:50%;display:block; margin:auto"/>
