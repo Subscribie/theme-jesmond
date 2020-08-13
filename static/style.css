@@ -11596,3 +11596,18 @@ h3{
     letter-spacing: -0.1rem;
 
 }
+
+
+/* -------------------- Custom styles --------------------- */
+
+.navbar-brand, .navbar-tabs {
+  min-height: 0;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: rgba(255,255,255);
+}
+
+.navbar-dark .navbar-nav :hover {
+  background-color: #2574fcb7;
+}
