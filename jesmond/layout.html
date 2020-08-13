@@ -97,21 +97,12 @@
     </main>
   </div>
 
-  <footer class="footer" style="padding: 3rem 1.5rem 3rem;">
-    <div class="container">
-      <div class="content has-text-centered">
-        <p>
-          By <a href="/">{{ company['name'] }}</a>.
-          <br />
-        </p>
-        <small>Made possible with <a href="https://subscriptionwebsitebuilder.co.uk"
-                title="Karma Subscription Website Builder">Subscription Website Builder</a> in Newcastle upon Tyne.</small>
-        <br />
-        <a href="{{ url_for('auth.login') }}">Login</a>
-        <br />
-        <a href="#" class="button is-small">Scroll back to top</a>
-      </div>
-    </div>
+  <footer class="container-fluid bg-light text-center py-5" >
+    <p> By <a href="/">{{ company['name'] }}</a>. </p>
+    <p> Made possible with <a href="https://subscriptionwebsitebuilder.co.uk" title="Karma Subscription Website Builder">Subscription Website Builder</a> in Newcastle upon Tyne.</p>
+    <a href="{{ url_for('auth.login') }}">Login</a>
+    <br />
+    <a href="#" class="btn btn-outline-secondary mt-3">Scroll back to top</a>
   </footer>
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
