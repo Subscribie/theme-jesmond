@@ -19,33 +19,46 @@
 
 {% block body %}
 
+<h2 class="text-center text-dark my-3 pt-3 h2">Choose your options</h2>
+
+<main>
 <div class="section">
   <div class="container">
 
-      <h3 class="title is-4 has-text-centered is-size-4-mobile">Choose your options</h2>
       
-      <p>The <em>{{ plan.title }}</em> plan has options</p>
+  
+      
 
-      <form action="" method="POST">
+      <form action="" method="POST" class="col-md-6 pb-3">
 
       {% for choice_group in plan.choice_groups %}
-      <details open>
-        <summary>{{ choice_group.title }} ({{ choice_group.options|count }} options) choose one:</summary>
-        <ul>
+      
+        <h3 class="h3">The <em>{{ plan.title }}</em> plan has options</h3>
+        <p class="card-subtitle text-muted mb-3">The choise group {{ choice_group.title }} has {{ choice_group.options|count }} options. Please choose one of them</p>
+        
+        <hr>
+
           {% for option in choice_group.options %}
-          <li>
-            <input type="radio" name="{{ choice_group.id }}" id="{{ option.id }}" value="{{ option.id }}" />
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input type="radio" name="{{ choice_group.id }}" id="{{ option.id }}" value="{{ option.id }}"  required>
+              </div>
+            </div>
+            <label class="form-control" for="{{ option.id }}">{{ option.title }}</label>
+          </div>
+          <!-- <div class="form-check">
+            <input type="radio" name="{{ choice_group.id }}" id="{{ option.id }}" value="{{ option.id }}" class="form-check-input" required>
             <label for="{{ option.id }}">{{ option.title }}</label>
-          </li>
+          </div> -->
           {% endfor %}
-        </ul>
-      </details>
+        
+      
       {% endfor %}
 
-      <input type="submit" class="btn btn-success"  value="Save" />
+      <input type="submit" class="btn btn-success btn-block"  value="Save" />
       </form>
-
   </div>
 </div>
-
+</main>
 {% endblock %}
