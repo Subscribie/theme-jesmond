@@ -54,8 +54,20 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-info kcBlue">
 
     <a class="navbar-brand font-weight-bolder pl-md-5 pr-3" href="/">
-      {% if company['logo'] %}
-        <img src="/static/{{ company['logo'] }}" alt="{{ company.name }}">
+      {% if company.logo_src is not sameas None %}
+      <style>
+      @media only screen and (max-width: 600px) {
+	  #logo {
+	    width: 100px;
+	  }
+	}
+      @media only screen and (min-width: 600px) {
+	  #logo {
+	    width: 200px;
+	  }
+	}
+      </style>
+      <img src="{{ company.logo_src }}" id="logo" alt="{{ company.name }} logo">
       {% else %}
         {{ company.name }}
       {% endif %}
