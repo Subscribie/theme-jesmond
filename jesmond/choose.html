@@ -33,7 +33,9 @@
             <div class="pricing-plan col-lg-3 col-md-5 my-3 mx-3">
                 <div class="plan-header">
                   {% if plan.primary_icon %}
+                    <a href="{{ plan.primary_icon }}">
                     <img src="{{ plan.primary_icon }}" style="width:50%;display:block; margin:auto"/>
+                    </a>
                   {% endif %}
                   {{ plan.title|safe }}
                 </div>
