@@ -252,15 +252,12 @@ input[type=checkbox]:checked + label::after {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
   background-color: white;
   border: 0.1rem solid whitesmoke;
   border-radius: 3px;
   list-style-type: none;
   transition: 0.25s;
-  margin: .5em;
+  
 }
 
 .pricing-table .pricing-plan .plan-header {
@@ -11595,4 +11592,19 @@ h3{
 
     letter-spacing: -0.1rem;
 
+}
+
+
+/* -------------------- Custom styles --------------------- */
+
+.navbar-brand, .navbar-tabs {
+  min-height: 0;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: rgba(255,255,255);
+}
+
+.navbar-dark .navbar-nav :hover {
+  background-color: #2574fcb7;
 }

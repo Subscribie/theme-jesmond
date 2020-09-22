@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% block title %} Up-front payment {% endblock %} 
+{% block title %} Up-front payment {% endblock %}
 
 {% block hero %}                                                                 
                                                                                  
@@ -70,20 +70,36 @@
 </div><!-- end columns -->
 <div class="columns">
     <div class="column">
-		<form action="/up_front" method="post" id="payment-form">
-		<article>
-		  <input id="sid" name="sid" type="hidden" value="{{ sid }}"></input>
-		  <input id="package" name="package" type="hidden" value="{{ plan.title }}"></input>
-		</article>
+        <button id="checkout-button" class="btn btn-success">Checkout</button>
 
-		<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-				data-key="{{ stripe_pub_key }}"
-				data-description="{{ company.name }} - {{ plan.title }}"
-				data-currency="gbp"
-				data-amount="{{ plan.sell_price }}"
-				data-locale="auto">
-		</script>
-        </form>
+        <script type="text/javascript">
+        // Create an instance of the Stripe
+        var stripe = Stripe('{{ stripe_pub_key }}');
+        var checkoutButton = document.getElementById('checkout-button');
+
+        checkoutButton.addEventListener('click', function() {
+            fetch('{{ stripe_create_checkout_session_url }}', {
+                method: 'POST',
+            })
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(session) {
+                return stripe.redirectToCheckout({ sessionId: session.id });
+            })
+            .then(function(result) {
+                // If `redirectToCheckout` fails due to a browser or network
+                // error, you should display the localized error message to your
+                // customer using `error.message`.
+                if (result.error) {
+                    alert(result.error.message);
+                }
+            })
+            .catch(function(error) {
+                console.error('Error:', error);
+            })
+        });
+        </script>
     </div>
 </div>
 </section>
