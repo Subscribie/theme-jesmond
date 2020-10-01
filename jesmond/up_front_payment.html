@@ -79,7 +79,9 @@
         });
         var checkoutButton = document.getElementById('checkout-button');
 
-        checkoutButton.addEventListener('click', function() {
+        checkoutButton.addEventListener('click', function(e) {
+            e.target.setAttribute("disabled", "disabled");
+            e.target.textContent = "Opening...";
             const account_id = "{{ stripe_connected_account_id }}"
             fetch('{{ stripe_create_checkout_session_url }}', {
                 method: 'POST',
