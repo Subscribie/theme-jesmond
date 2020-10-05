@@ -267,7 +267,7 @@ input[type=checkbox]:checked + label::after {
   background-color: white;
   font-size: 1.25rem;
   font-weight: 600;
-  padding: .75em;
+  padding: .75em 0 .75em 0;
   -ms-flex-line-pack: center;
       align-content: center;
   text-align: center;
