@@ -253,10 +253,11 @@ input[type=checkbox]:checked + label::after {
       -ms-flex-direction: column;
           flex-direction: column;
   background-color: white;
-  border: 0.1rem solid whitesmoke;
+  border: 0.1rem solid lightgrey;
   border-radius: 3px;
   list-style-type: none;
   transition: 0.25s;
+  border-radius: 15px;
   
 }
 
