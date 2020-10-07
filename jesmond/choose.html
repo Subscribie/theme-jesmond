@@ -45,21 +45,31 @@
                 {% endfor %}
                 </div>
               <div class="plan-footer">
-                  <div class="plan-price" style="padding-bottom:0;">
-                      <span class="plan-price-amount">
-                      {% if plan.requirements.subscription %}
-                          <span class="plan-price-currency">&pound;</span>{{ "%.2f"|format(plan.interval_amount/100) }}</span>/
-                          {{ plan.interval_unit }}
+                  {# Make up-front price large if not a subscription, otherwise subscription price is large #}
+                  {% if plan.requirements.subscription %}
+                      <div class="plan-price" style="padding-bottom:0;">
+                          <span class="plan-price-amount">
+                              <span class="plan-price-currency">&pound;</span>{{ "%.2f"|format(plan.interval_amount/100) }}</span>/
+                              {{ plan.interval_unit }}
+                          </span>
+                      </div>
+                      {% if plan.requirements.instant_payment %}
+                        <small>Upfront cost: &pound;{{ "%.2f"|format(plan.sell_price/100) }}</small></br></br>
                       {% else %}
-                          <span class="plan-price-currency">&pound;</span>0.00
+                        <small>Upfront cost: None</small></br></br>
                       {% endif %}
-                      </span>
-                  </div>
-                  {% if plan.requirements.instant_payment %}
-                    <small>Upfront cost: &pound;{{ "%.2f"|format(plan.sell_price/100) }}</small></br></br>
-                  {% else %}
-                    <small>Upfront cost: None</small></br></br>
+                  {% else  %} {# Not a subscription based product #}
+                      <div class="plan-price" style="padding-bottom:0;">
+                          <span class="plan-price-amount">
+                              <span class="plan-price-currency">&pound;</span>{{ "%.2f"|format(plan.sell_price/100) }}</span>/
+                              One-off
+                          </span>
+                      </div>
+                        <small>No subscription</small></br></br>
+
+
                   {% endif %}
+                  {# End make up-front price large if not a subscription, otherwise subscription price is large #}
 
                   {% if plan.choice_groups %}
                   <h4>Choices</h4>
