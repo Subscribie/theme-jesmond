@@ -77,7 +77,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarNav">
+    <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         {% if g.user %}
           <li class="nav-item">
@@ -95,6 +95,11 @@
             </a>
           </li>
         {% endfor %}
+      </ul>
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('subscriber.login') }}" title="Subscriber login">My account</a>
+          </li>
       </ul>
     </div>
   </nav>
@@ -116,7 +121,7 @@
   <footer class="container-fluid bg-light text-center py-5" >
     <p> By <a href="/">{{ company['name'] }}</a>. </p>
     <p> Made possible with <a href="https://subscriptionwebsitebuilder.co.uk" title="Karma Subscription Website Builder">Subscription Website Builder</a> in Newcastle upon Tyne.</p>
-    <a href="{{ url_for('auth.login') }}">Login</a>
+    <a href="{{ url_for('auth.login') }}">Shop owner login</a>
     {% if g.user %}
       <a class="nav-link" href="/auth/logout">Logout</a>
     {% endif %}
